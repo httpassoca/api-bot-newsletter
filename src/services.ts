@@ -13,11 +13,13 @@ export const Login = async (page: Page) => {
 export const Tweet = async (page: Page, tweet: string) => {
   const tweets = arrayOfTweets(tweet);
   for (let i = 0; i < tweets.length; i++) {
-    await page.click('[data-contents] > div > div');
-    await page.keyboard.type(tweets[i], { delay: 60 });
-    await page.click('div[role="button"][data-testid="tweetButtonInline"]');
+    console.log(tweets[i]);
+    const primeiro = i == 0;
+    page.click(primeiro ? '[data-contents] > div > div' : '[role="group"] > div > div');
+    await page.waitForTimeout(1000);
+    await page.keyboard.type(tweets[i], { delay: 45 });
+    await page.click(primeiro ? 'div[role="button"][data-testid="tweetButtonInline"]' : 'div[role="button"][data-testid="tweetButton"]');
     await page.waitForTimeout(2000);
-    
   }
 }
 
