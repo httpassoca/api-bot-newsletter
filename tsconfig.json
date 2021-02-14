@@ -25,13 +25,14 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "baseUrl": "."
+    "baseUrl": ".",
   },
   "exclude": [
     "node_modules"
   ],
   "include": [
     "./src/**/*.tsx",
-    "./src/**/*.ts"
-  ]
+    "./src/**/*.ts",
+    "src/example.js"
+  ],
 }
