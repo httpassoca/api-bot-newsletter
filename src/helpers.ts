@@ -15,7 +15,6 @@ const arrayOfTweets = (string: string) => {
     }
     betterPart = string.substr(0, pos) + ' +';
     string = string.slice(pos + 1, string.length);
-    console.log(betterPart);
     array.push(betterPart);
   }
   array.push(string);

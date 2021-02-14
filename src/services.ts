@@ -1,4 +1,5 @@
 import { Browser, Page } from "puppeteer";
+import arrayOfTweets from './helpers';
 
 export const Login = async (page: Page) => {
   await page.goto('https://twitter.com/login');
@@ -10,12 +11,16 @@ export const Login = async (page: Page) => {
 }
 
 export const Tweet = async (page: Page, tweet: string) => {
-  await page.click('[data-contents] > div > div');
-  await page.keyboard.type(tweet, { delay: 110 });
-  await page.click('div[role="button"][data-testid="tweetButtonInline"]');
-  await page.waitForTimeout(2000);
+  const tweets = arrayOfTweets(tweet);
+  for (let i = 0; i < tweets.length; i++) {
+    await page.click('[data-contents] > div > div');
+    await page.keyboard.type(tweets[i], { delay: 60 });
+    await page.click('div[role="button"][data-testid="tweetButtonInline"]');
+    await page.waitForTimeout(2000);
+    
+  }
 }
 
-export const Logout = async (browser: Browser): Promise<any> => {
+export const Logout = async (browser: Browser) => {
   await browser.close();
 }
