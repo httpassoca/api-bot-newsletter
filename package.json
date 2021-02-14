@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "puppeteer": "^7.1.0"
@@ -9,6 +10,7 @@
     "server": "tsc && node dist/server.js"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.9",
     "@types/express": "^4.17.11",
     "@types/node": "^14.14.27",
     "@types/puppeteer": "^5.4.3"
