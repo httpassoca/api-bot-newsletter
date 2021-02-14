@@ -1,12 +1,15 @@
-import { Express, Response, Request } from "express";
-import { Page } from "puppeteer";
-import Tweet from './services/tweet';
+import { Express, Request, Response } from "express";
+import { launch } from "puppeteer";
+import { Login, Tweet, Logout } from './services';
 
-
-export default (app: Express, page: Page) => {
-  app.post("/tweet", async (req: Request, res: Response) => {
+export default (app: Express) => {
+  app.post("/newsletter", async (req: Request, res: Response) => {
     const { tweet } = req.body;
+    const browser = await launch({headless: false});
+    const page = await browser.newPage();
+    await Login(page);
     await Tweet(page, tweet);
-    res.send(tweet);
+    await Logout(browser);
+    return res.send("Atualizado!");
   })
 }
