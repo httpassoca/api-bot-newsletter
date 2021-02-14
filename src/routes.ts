@@ -4,11 +4,11 @@ import { Login, Tweet, Logout } from './services';
 
 export default (app: Express) => {
   app.post("/newsletter", async (req: Request, res: Response) => {
-    const { _new } = req.body;
+    const { news } = req.body;
     const browser = await launch({headless: false});
     const page = await browser.newPage();
     await Login(page);
-    await Tweet(page, _new);
+    await Tweet(page, news);
     await Logout(browser);
     return res.send("Atualizado!");
   })
