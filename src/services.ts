@@ -7,6 +7,7 @@ export const Login = async (page: Page) => {
   await page.type('input', 'DeschampsNews', { delay: 65 });
   await page.type('input[type="password"]', process.env.PASSWORD as string,  { delay: 65 });
   await page.keyboard.press('Enter');
+  console.log('LOGGED BITCHESSSS 😎');
   await page.waitForTimeout(4000);
 }
 
@@ -20,10 +21,12 @@ export const Tweet = async (page: Page, tweet: string[]) => {
       await page.keyboard.type(tweets[i], { delay: 15 });
       await page.click(primeiro ? 'div[role="button"][data-testid="tweetButtonInline"]' : 'div[role="button"][data-testid="tweetButton"]');
       await page.waitForTimeout(2000);
+      console.log('a tweet 🤗');
     }
   }
 }
 
 export const Logout = async (browser: Browser) => {
   await browser.close();
+  console.log('LOG OUT 😪');
 }
