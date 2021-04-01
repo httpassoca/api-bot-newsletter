@@ -34,5 +34,5 @@
     "./src/**/*.tsx",
     "./src/**/*.ts",
     "src/example.js"
-  ],
+  ]
 }
